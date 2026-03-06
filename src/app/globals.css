@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Color Mappings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  /* Modern Radius System */
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 3);
+
+  /* --- Top-Rated Animations --- */
+  --animate-bounce-slow: bounce-slow 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 3s ease-in-out infinite;
+  --animate-slow-zoom: slow-zoom 20s ease-in-out infinite alternate;
+@keyframes slow-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+}
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(2deg); }
+    50% { transform: translateY(-15px) rotate(-1deg); }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+
+
+:root {
+  /* Soft Alabaster & Indigo Theme (Light) */
+  --background: oklch(0.99 0.005 240); /* Softest off-white with hint of blue */
+  --foreground: oklch(0.25 0.03 250);   /* Deep slate-indigo (Avoids harsh black) */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.25 0.03 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.03 250);
+  
+  --primary: oklch(0.55 0.18 255);      /* Vibrant but professional Royal Blue */
+  --primary-foreground: oklch(0.99 0.005 240);
+  
+  --secondary: oklch(0.95 0.01 250);    /* Soft grey-blue tint */
+  --secondary-foreground: oklch(0.35 0.05 255);
+  
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.55 0.04 250);
+  
+  --accent: oklch(0.92 0.03 255);
+  --accent-foreground: oklch(0.45 0.15 255);
+  
+  --border: oklch(0.90 0.01 250);
+  --input: oklch(0.90 0.01 250);
+  --ring: oklch(0.55 0.18 255 / 0.2);
+  
+  --radius: 0.8rem;
+}
+
+.dark {
+  /* Midnight Sapphire Theme (Dark) */
+  --background: oklch(0.18 0.02 255);   /* Deep Midnight (Not pure black) */
+  --foreground: oklch(0.92 0.01 250);   /* Soft pearl white (Not pure white) */
+  
+  --card: oklch(0.22 0.03 255);         /* Slightly lifted midnight sapphire */
+  --card-foreground: oklch(0.92 0.01 250);
+  
+  --popover: oklch(0.20 0.03 255);
+  --popover-foreground: oklch(0.92 0.01 250);
+  
+  --primary: oklch(0.75 0.12 215);      /* Luminous Sky Blue for contrast */
+  --primary-foreground: oklch(0.18 0.02 255);
+  
+  --secondary: oklch(0.28 0.04 255);
+  --secondary-foreground: oklch(0.92 0.01 250);
+  
+  --muted: oklch(0.26 0.03 255);
+  --muted-foreground: oklch(0.65 0.03 250);
+  
+  --accent: oklch(0.32 0.05 255);
+  --accent-foreground: oklch(0.85 0.10 215);
+  
+  --border: oklch(1 0 0 / 12%);         /* Ghostly borders for glass effects */
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.75 0.12 215 / 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50 transition-colors duration-500 ease-in-out;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    @apply scroll-smooth font-sans;
+  }
+}
+
+@layer utilities {
+  /* Premium Frosted Glass Effect */
+  .glass {
+    @apply bg-background/60 backdrop-blur-xl border border-border/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+  }
+
+  /* Text Gradient Utility */
+  .text-gradient {
+    @apply bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent;
+  }
+
+  /* Eye-Smoothing Shadow System */
+  .shadow-soft {
+    shadow: 0 10px 30px -10px oklch(var(--primary) / 0.15);
+  }
+  .glass-white {
+    /* Uses the background hue (240) but allows 70% transparency */
+    background: oklch(1 0.005 240 / 70%); 
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 15%);
+    box-shadow: 0 8px 32px 0 oklch(0.25 0.03 250 / 5%);
+  }
+}
