@@ -18,17 +18,17 @@ export const UserLoginDropdown = () => (
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" className="w-56 mt-2">
       <DropdownMenuItem asChild>
-        <Link href="/dashboard/student" className="cursor-pointer flex items-center">
+        <Link href="/auth/login/student" className="cursor-pointer flex items-center">
   <GraduationCap className="mr-2 h-4 w-4" /> Student Login
 </Link>
       </DropdownMenuItem>
       <DropdownMenuItem asChild>
-        <Link href="/dashboard/parents" className="cursor-pointer flex items-center">
+        <Link href="/auth/login/parent" className="cursor-pointer flex items-center">
           <Users className="mr-2 h-4 w-4"/> Parents Portal
         </Link>
       </DropdownMenuItem>
       <DropdownMenuItem asChild>
-        <Link href="/dashboard/admin" className="cursor-pointer flex items-center">
+        <Link href="/auth/login/admin" className="cursor-pointer flex items-center">
           <School className="mr-2 h-4 w-4"/> School Administration
         </Link>
       </DropdownMenuItem>

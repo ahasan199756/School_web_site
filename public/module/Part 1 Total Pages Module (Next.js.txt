@@ -10,3 +10,17 @@ src/
 │   ├── Navbar.tsx         # Sticky navigation
 │   └── Footer.tsx         # Information & links
 └── lib/                   # Utility functions
+
+
+
+
+src/
+└── app/
+    └── (auth)/
+        └── login/
+            ├── student/
+            │   └── page.tsx    <-- Student Login Page
+            ├── parent/
+            │   └── page.tsx    <-- Parent Login Page
+            └── admin/
+                └── page.tsx    <-- Admin Login Page
